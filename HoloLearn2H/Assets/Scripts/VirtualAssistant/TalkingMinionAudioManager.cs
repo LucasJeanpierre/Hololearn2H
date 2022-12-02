@@ -6,34 +6,34 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
 {
     private int count;
 
-    [AudioEvent]
-    public string Intro;
-    [AudioEvent]
-    public string Walking_daquestaparte;
-    [AudioEvent]
-    public string Walking_seguimi;
-    [AudioEvent]
-    public string Walking_vieniconme;
-    [AudioEvent]
-    public string Pointing_carta;
-    [AudioEvent]
-    public string Pointing_plastica;
-    [AudioEvent]
-    public string Pointing_vetro;
-    [AudioEvent]
-    public string Pointing_cartabin;
-    [AudioEvent]
-    public string Pointing_plasticabin;
-    [AudioEvent]
-    public string Pointing_vetrobin;
-    [AudioEvent]
-    public string Jumping_benfatto;
-    [AudioEvent]
-    public string Jumping_eccellente;
-    [AudioEvent]
-    public string ShakingHeadNo_nonono;
-    [AudioEvent]
-    public string ShakingHeadNo_riprova;
+    
+    public AudioSource Intro;
+    
+    public AudioSource Walking_daquestaparte;
+    
+    public AudioSource Walking_seguimi;
+    
+    public AudioSource Walking_vieniconme;
+    
+    public AudioSource Pointing_carta;
+    
+    public AudioSource Pointing_plastica;
+    
+    public AudioSource Pointing_vetro;
+    
+    public AudioSource Pointing_cartabin;
+    
+    public AudioSource Pointing_plasticabin;
+    
+    public AudioSource Pointing_vetrobin;
+    
+    public AudioSource Jumping_benfatto;
+    
+    public AudioSource Jumping_eccellente;
+    
+    public AudioSource ShakingHeadNo_nonono;
+    
+    public AudioSource ShakingHeadNo_riprova;
 
 
     public override void PlayShakingHeadNo()
@@ -43,10 +43,12 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
         switch (rnd.Next(0, 1))
         {
             case 0:
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(ShakingHeadNo_nonono);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(ShakingHeadNo_nonono);
+                ShakingHeadNo_nonono.Play();
                 break;
             case 1:
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(ShakingHeadNo_riprova);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(ShakingHeadNo_riprova);
+                ShakingHeadNo_riprova.Play();
                 break;
         }
         count = 0;
@@ -63,13 +65,16 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
             switch (rnd.Next(0, 3))
             {
                 case 0:
-                    TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_vieniconme);
+                    //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_vieniconme);
+                    Walking_vieniconme.Play();
                     break;
                 case 1:
-                    TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_seguimi);
+                    //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_seguimi);
+                    Walking_seguimi.Play();
                     break;
                 case 2:
-                    TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_daquestaparte);
+                    //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Walking_daquestaparte);
+                    Walking_daquestaparte.Play();
                     break;
             }
             count++;
@@ -79,7 +84,8 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
 
     public override void PlayIntro()
     {
-        TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Intro);
+        //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Intro);
+        Intro.Play();
         count = 0;
     }
 
@@ -92,10 +98,12 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
             switch (rnd.Next(0, 1))
             {
                 case 0:
-                    TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Jumping_benfatto);
+                    //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Jumping_benfatto);
+                    Jumping_benfatto.Play();
                     break;
                 case 1:
-                    TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Jumping_eccellente);
+                    //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Jumping_eccellente);
+                    Jumping_eccellente.Play();
                     break;
             }
             count++;
@@ -109,20 +117,26 @@ public class TalkingMinionAudioManager : AssistantAudioManagerInterface
         if (target.name.Contains("Bin"))
         {
             if (target.tag == "Paper")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_cartabin);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_cartabin);
+                Pointing_cartabin.Play();
             if (target.tag == "Plastic")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_plasticabin);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_plasticabin);
+                Pointing_plasticabin.Play();
             if (target.tag == "Glass")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_vetrobin);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_vetrobin);
+                Pointing_vetrobin.Play();
         }
         else
         {
             if (target.tag == "Paper")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_carta);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_carta);
+                Pointing_carta.Play();
             if (target.tag == "Plastic")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_plastica);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_plastica);
+                Pointing_plastica.Play();
             if (target.tag == "Glass")
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_vetro);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Pointing_vetro);
+                Pointing_vetro.Play();
         }
         count = 0;
     }

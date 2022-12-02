@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PaperBinAudioManager : BinAudioManagerInterface
 {
-    [AudioEvent]
-    public string Paper;
+    public AudioSource Paper;
 
     public override void PlayBinSound()
     {
-        TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Paper);
+        //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Paper);
+        Paper.Play();
     }
 }

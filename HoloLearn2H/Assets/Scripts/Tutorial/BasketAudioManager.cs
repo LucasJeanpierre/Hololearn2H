@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class BasketAudioManager : MonoBehaviour
 {
-    [AudioEvent]
-    public string BasketDunk1;
-    [AudioEvent]
-    public string BasketDunk2;
+    
+    public AudioSource BasketDunk1;
+    
+    public AudioSource BasketDunk2;
 
     public void PlayBasketDunk()
     {
@@ -16,10 +16,12 @@ public class BasketAudioManager : MonoBehaviour
         switch (rnd.Next(0, 1))
         {
             case 0:
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(BasketDunk1);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(BasketDunk1);
+                BasketDunk1.Play();
                 break;
             case 1:
-                TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(BasketDunk2);
+                //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(BasketDunk2);
+                BasketDunk2.Play();
                 break;
         }
     }

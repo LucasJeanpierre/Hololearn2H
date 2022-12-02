@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlasticBinAudioManager : BinAudioManagerInterface
 {
-    [AudioEvent]
-    public string Plastic;
+    public AudioSource Plastic;
 
     public override void PlayBinSound()
     {
-        TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Plastic);
+        //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Plastic);
+        Plastic.Play();
     }
 
 }

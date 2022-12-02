@@ -39,59 +39,59 @@ public class TutorialManager : TaskManager
 
     public override void GenerateObjectsInWorld()
     {
-        Transform floor = SpatialProcessing.Instance.floors.ElementAt(0).transform;
-        SurfacePlane plane = floor.GetComponent<SurfacePlane>();
+        // Transform floor = SpatialProcessing.Instance.floors.ElementAt(0).transform;
+        // SurfacePlane plane = floor.GetComponent<SurfacePlane>();
         
 
-        Vector3 floorPosition = floor.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
-        floorPosition = AdjustPositionWithSpatialMap(floorPosition, plane.SurfaceNormal);
+        // Vector3 floorPosition = floor.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
+        // floorPosition = AdjustPositionWithSpatialMap(floorPosition, plane.SurfaceNormal);
 
-        Vector3 gazePosition = new Vector3(0f, 0f, 0f);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
-        {
-            gazePosition = hitInfo.point;
-        }
+        // Vector3 gazePosition = new Vector3(0f, 0f, 0f);
+        // RaycastHit hitInfo;
+        // if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
+        // {
+        //     gazePosition = hitInfo.point;
+        // }
 
-        Vector3 objsPosition = gazePosition;
-        objsPosition.y = floorPosition.y;
-
-
-        Vector3 relativePos = Camera.main.transform.position - gazePosition;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        rotation.x = 0f;
-        rotation.z = 0f;
+        // Vector3 objsPosition = gazePosition;
+        // objsPosition.y = floorPosition.y;
 
 
-        Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
-
-        Transform targets = new GameObject("Targets").transform;
-        targets.parent = sceneRoot;
-        targets.tag = "Targets";
-        Instantiate(Targets.transform.GetChild(0), Targets.transform.GetChild(0).position + new Vector3(0f, 0.2f, 0f), Targets.transform.GetChild(0).rotation, targets);
-        targets.Translate(objsPosition);
-        targets.Rotate(rotation.eulerAngles);
+        // Vector3 relativePos = Camera.main.transform.position - gazePosition;
+        // Quaternion rotation = Quaternion.LookRotation(relativePos);
+        // rotation.x = 0f;
+        // rotation.z = 0f;
 
 
-        Transform objs = new GameObject("ObjectsToBePlaced").transform;
-        objs.parent = sceneRoot;
-        objs.tag = "ObjectsToBePlaced";
-        Instantiate(ObjectsToBePlaced.transform.GetChild(0), ObjectsToBePlaced.transform.GetChild(0).position, ObjectsToBePlaced.transform.GetChild(0).rotation, objs);
-        objs.Translate(Vector3.Lerp(objsPosition, Camera.main.transform.position, 0.5f));
+        // Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
+
+        // Transform targets = new GameObject("Targets").transform;
+        // targets.parent = sceneRoot;
+        // targets.tag = "Targets";
+        // Instantiate(Targets.transform.GetChild(0), Targets.transform.GetChild(0).position + new Vector3(0f, 0.2f, 0f), Targets.transform.GetChild(0).rotation, targets);
+        // targets.Translate(objsPosition);
+        // targets.Rotate(rotation.eulerAngles);
 
 
-        Counter.Instance.InitializeCounter(ObjectsToBePlaced.GetComponentsInChildren<Rigidbody>().Length);
+        // Transform objs = new GameObject("ObjectsToBePlaced").transform;
+        // objs.parent = sceneRoot;
+        // objs.tag = "ObjectsToBePlaced";
+        // Instantiate(ObjectsToBePlaced.transform.GetChild(0), ObjectsToBePlaced.transform.GetChild(0).position, ObjectsToBePlaced.transform.GetChild(0).rotation, objs);
+        // objs.Translate(Vector3.Lerp(objsPosition, Camera.main.transform.position, 0.5f));
 
 
-        Vector3 assistantPosition = gazePosition + new Vector3(-0.5f, 0f, 0f);
-        assistantPosition.y = floor.position.y;
+        // Counter.Instance.InitializeCounter(ObjectsToBePlaced.GetComponentsInChildren<Rigidbody>().Length);
 
-        if (assistantPresence != 0)
-        {
-            Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
-            VirtualAssistantManager.Instance.patience = assistantPatience;
-            VirtualAssistantManager.Instance.transform.localScale += new Vector3(0.25f * VirtualAssistantManager.Instance.transform.localScale.x, 0.25f * VirtualAssistantManager.Instance.transform.localScale.y, 0.25f * VirtualAssistantManager.Instance.transform.localScale.z);
-        }
+
+        // Vector3 assistantPosition = gazePosition + new Vector3(-0.5f, 0f, 0f);
+        // assistantPosition.y = floor.position.y;
+
+        // if (assistantPresence != 0)
+        // {
+        //     Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
+        //     VirtualAssistantManager.Instance.patience = assistantPatience;
+        //     VirtualAssistantManager.Instance.transform.localScale += new Vector3(0.25f * VirtualAssistantManager.Instance.transform.localScale.x, 0.25f * VirtualAssistantManager.Instance.transform.localScale.y, 0.25f * VirtualAssistantManager.Instance.transform.localScale.z);
+        // }
 
     }
 

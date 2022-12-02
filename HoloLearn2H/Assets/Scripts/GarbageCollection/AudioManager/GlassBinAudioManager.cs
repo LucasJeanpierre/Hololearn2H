@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class GlassBinAudioManager : BinAudioManagerInterface
 {
-    [AudioEvent]
-    public string Glass;
+    public AudioSource Glass;
 
     public override void PlayBinSound()
     {
-        TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Glass);
+        //TaskManager.Instance.GetComponent<UAudioManager>().PlayEvent(Glass);
+        Glass.Play();
     }
 }

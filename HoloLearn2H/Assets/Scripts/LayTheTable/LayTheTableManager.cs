@@ -48,96 +48,96 @@ public class LayTheTableManager : TaskManager
     public override void GenerateObjectsInWorld()
     {
         //Seleziono il tavolo dove guarda l'utente
-        Transform table = TableSelect(SpatialProcessing.Instance.tables);
+        // Transform table = TableSelect(SpatialProcessing.Instance.tables);
 
-        Bounds tableColliderBounds = table.GetColliderBounds();
+        // Bounds tableColliderBounds = table.GetColliderBounds();
 
-        Vector3 tableEdge1 = table.TransformPoint(0.4f, 0f, 0f);
-        Vector3 tableEdge2 = table.TransformPoint(-0.4f, 0f, 0f);
-        Vector3 tableEdge3 = table.TransformPoint(0f, -0.4f, 0f);
-        Vector3 tableEdge4 = table.TransformPoint(0f, 0.4f, 0f);
-
-
-        List<Vector3> tableEdges = new List<Vector3>() { tableEdge1, tableEdge2, tableEdge3, tableEdge4 };
-        Debug.DrawLine(tableEdge1, tableColliderBounds.center, Color.black, 30f);
-        Debug.DrawLine(tableEdge2, tableColliderBounds.center, Color.black, 30f);
-        Debug.DrawLine(tableEdge3, tableColliderBounds.center, Color.red, 30f);
-        Debug.DrawLine(tableEdge4, tableColliderBounds.center, Color.red, 30f);
-
-        List<Quaternion> rotations = new List<Quaternion>();
-
-        for (int i=0; i<tableEdges.Count; i++)
-        {
-            Vector3 relativeDirection = tableColliderBounds.center - tableEdges.ElementAt(i);
-            Quaternion rotation = Quaternion.LookRotation(relativeDirection);
-            rotations.Add(rotation);
-        }
+        // Vector3 tableEdge1 = table.TransformPoint(0.4f, 0f, 0f);
+        // Vector3 tableEdge2 = table.TransformPoint(-0.4f, 0f, 0f);
+        // Vector3 tableEdge3 = table.TransformPoint(0f, -0.4f, 0f);
+        // Vector3 tableEdge4 = table.TransformPoint(0f, 0.4f, 0f);
 
 
-        Transform objectsToBePlaced = selectedLevel.gameObject.GetComponent<ObjectsGenerator>().GenerateObjects(ObjectsPrefabs.transform, numberOfPeople);
-        objectsToBePlaced.Translate(tableEdge1);
-        objectsToBePlaced.Rotate(rotations.ElementAt(0).eulerAngles);
+        // List<Vector3> tableEdges = new List<Vector3>() { tableEdge1, tableEdge2, tableEdge3, tableEdge4 };
+        // Debug.DrawLine(tableEdge1, tableColliderBounds.center, Color.black, 30f);
+        // Debug.DrawLine(tableEdge2, tableColliderBounds.center, Color.black, 30f);
+        // Debug.DrawLine(tableEdge3, tableColliderBounds.center, Color.red, 30f);
+        // Debug.DrawLine(tableEdge4, tableColliderBounds.center, Color.red, 30f);
+
+        // List<Quaternion> rotations = new List<Quaternion>();
+
+        // for (int i=0; i<tableEdges.Count; i++)
+        // {
+        //     Vector3 relativeDirection = tableColliderBounds.center - tableEdges.ElementAt(i);
+        //     Quaternion rotation = Quaternion.LookRotation(relativeDirection);
+        //     rotations.Add(rotation);
+        // }
 
 
-        Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
-
-        Transform tablePlacements = new GameObject("TableMates").transform;
-        tablePlacements.parent = sceneRoot;
-        tablePlacements.tag = "Targets";
-
-        Transform tableMatesPlacements = selectedLevel.Find("TableMatePlacement");
-        for (int i=1; i<=numberOfPeople; i++)
-        {
-            Instantiate(tableMatesPlacements.gameObject, tableEdges.ElementAt(i) + new Vector3(0f, 0.01f, 0f), rotations.ElementAt(i), tablePlacements);
-        }
-
-        Transform beveragesPlacements = selectedLevel.Find("BeveragesPlacement");
-        Instantiate(beveragesPlacements.gameObject, tableColliderBounds.center + new Vector3(0f, 0.01f, 0f), beveragesPlacements.transform.rotation, tablePlacements);
-
-        Counter.Instance.InitializeCounter(objectsToBePlaced.GetComponentsInChildren<Rigidbody>().Length);
+        // Transform objectsToBePlaced = selectedLevel.gameObject.GetComponent<ObjectsGenerator>().GenerateObjects(ObjectsPrefabs.transform, numberOfPeople);
+        // objectsToBePlaced.Translate(tableEdge1);
+        // objectsToBePlaced.Rotate(rotations.ElementAt(0).eulerAngles);
 
 
+        // Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
 
-        Vector3 assistantPosition = table.TransformPoint(-0.2f, 0f, 0f);
+        // Transform tablePlacements = new GameObject("TableMates").transform;
+        // tablePlacements.parent = sceneRoot;
+        // tablePlacements.tag = "Targets";
 
-        if (assistantPresence != 0)
-        {
-            Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
-            VirtualAssistantManager.Instance.patience = assistantPatience;
-        }
+        // Transform tableMatesPlacements = selectedLevel.Find("TableMatePlacement");
+        // for (int i=1; i<=numberOfPeople; i++)
+        // {
+        //     Instantiate(tableMatesPlacements.gameObject, tableEdges.ElementAt(i) + new Vector3(0f, 0.01f, 0f), rotations.ElementAt(i), tablePlacements);
+        // }
+
+        // Transform beveragesPlacements = selectedLevel.Find("BeveragesPlacement");
+        // Instantiate(beveragesPlacements.gameObject, tableColliderBounds.center + new Vector3(0f, 0.01f, 0f), beveragesPlacements.transform.rotation, tablePlacements);
+
+        // Counter.Instance.InitializeCounter(objectsToBePlaced.GetComponentsInChildren<Rigidbody>().Length);
+
+
+
+        // Vector3 assistantPosition = table.TransformPoint(-0.2f, 0f, 0f);
+
+        // if (assistantPresence != 0)
+        // {
+        //     Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
+        //     VirtualAssistantManager.Instance.patience = assistantPatience;
+        // }
     }
 
-    private Transform TableSelect(List<GameObject> tables)
-    {
-        Vector3 gazePosition = new Vector3(0f, 0f, 0f);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
-        {
-            gazePosition = hitInfo.point;
-        }
+    // private Transform TableSelect(List<GameObject> tables)
+    // {
+        // Vector3 gazePosition = new Vector3(0f, 0f, 0f);
+        // RaycastHit hitInfo;
+        // if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
+        // {
+        //     gazePosition = hitInfo.point;
+        // }
 
-        float minDistance = 1000f;
-        Transform nearestTable = null;
-        foreach (GameObject table in tables)
-        {
-            Vector3 tableCenter = table.transform.GetColliderBounds().center;
-            if (Vector3.Distance(tableCenter, gazePosition) <= minDistance)
-            {
-                minDistance = Vector3.Distance(tableCenter, gazePosition);
-                nearestTable = table.transform;
-            }
-        }
+        // float minDistance = 1000f;
+        // Transform nearestTable = null;
+        // foreach (GameObject table in tables)
+        // {
+        //     Vector3 tableCenter = table.transform.GetColliderBounds().center;
+        //     if (Vector3.Distance(tableCenter, gazePosition) <= minDistance)
+        //     {
+        //         minDistance = Vector3.Distance(tableCenter, gazePosition);
+        //         nearestTable = table.transform;
+        //     }
+        // }
 
-        foreach (GameObject table in tables)
-        {
-            if (table.GetInstanceID() != nearestTable.gameObject.GetInstanceID())
-            {
-                Destroy(table.gameObject);
-            }
-        }
+        // foreach (GameObject table in tables)
+        // {
+        //     if (table.GetInstanceID() != nearestTable.gameObject.GetInstanceID())
+        //     {
+        //         Destroy(table.gameObject);
+        //     }
+        // }
 
-        return nearestTable;
-    }
+        // return nearestTable;
+    //}
     
 
     private void LoadSettings()

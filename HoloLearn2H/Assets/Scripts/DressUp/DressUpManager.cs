@@ -44,109 +44,109 @@ public class DressUpManager : TaskManager
 
     public override void GenerateObjectsInWorld()
     {
-        //Seleziono il pavimento
-        Transform floor = SpatialProcessing.Instance.floors.ElementAt(0).transform;
-        SurfacePlane plane = floor.GetComponent<SurfacePlane>();
+        // //Seleziono il pavimento
+        // Transform floor = SpatialProcessing.Instance.floors.ElementAt(0).transform;
+        // SurfacePlane plane = floor.GetComponent<SurfacePlane>();
 
-        System.Random rnd = new System.Random();
-
-
-        Vector3 floorPosition = floor.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
-        floorPosition = AdjustPositionWithSpatialMap(floorPosition, plane.SurfaceNormal);
-
-        Vector3 gazePosition = new Vector3(0f, 0f, 0f);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
-        {
-            gazePosition = hitInfo.point;
-        }
-
-        Vector3 weatherPosition = gazePosition;
-        weatherPosition.y = floorPosition.y + 1f;
-        Debug.DrawLine(Camera.main.transform.position, weatherPosition, Color.black, 30f);
+        // System.Random rnd = new System.Random();
 
 
-        Vector3 relativePos = Camera.main.transform.position - gazePosition;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        rotation.x = 0f;
-        rotation.z = 0f;
+        // Vector3 floorPosition = floor.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
+        // floorPosition = AdjustPositionWithSpatialMap(floorPosition, plane.SurfaceNormal);
+
+        // Vector3 gazePosition = new Vector3(0f, 0f, 0f);
+        // RaycastHit hitInfo;
+        // if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f, Physics.DefaultRaycastLayers))
+        // {
+        //     gazePosition = hitInfo.point;
+        // }
+
+        // Vector3 weatherPosition = gazePosition;
+        // weatherPosition.y = floorPosition.y + 1f;
+        // Debug.DrawLine(Camera.main.transform.position, weatherPosition, Color.black, 30f);
 
 
-        Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
-
-        Transform weather = new GameObject("Weather").transform;
-        weather.parent = sceneRoot;
-        weather.position = weatherPosition;
-
-        Transform selectedLevel = WeatherPrefabs.transform.GetChild(numberOfLevel);
-        Transform selectedWeather = selectedLevel.GetChild(rnd.Next(0, selectedLevel.childCount));
-        Instantiate(selectedWeather, weather.TransformPoint(-0.2f, 0f, 0f), rotation, weather);
-
-        selectedWeather.GetChild(1).GetComponent<TemperatureGenerator>().GenerateTemperature();
+        // Vector3 relativePos = Camera.main.transform.position - gazePosition;
+        // Quaternion rotation = Quaternion.LookRotation(relativePos);
+        // rotation.x = 0f;
+        // rotation.z = 0f;
 
 
-        weathertag = GameObject.Find("Weather").transform.GetChild(0).GetChild(0).tag;
-        temperaturetag = GameObject.Find("Weather").transform.GetChild(0).GetChild(1).tag;
+        // Transform sceneRoot = GameObject.Find("Broadcasted Content").transform;
+
+        // Transform weather = new GameObject("Weather").transform;
+        // weather.parent = sceneRoot;
+        // weather.position = weatherPosition;
+
+        // Transform selectedLevel = WeatherPrefabs.transform.GetChild(numberOfLevel);
+        // Transform selectedWeather = selectedLevel.GetChild(rnd.Next(0, selectedLevel.childCount));
+        // Instantiate(selectedWeather, weather.TransformPoint(-0.2f, 0f, 0f), rotation, weather);
+
+        // selectedWeather.GetChild(1).GetComponent<TemperatureGenerator>().GenerateTemperature();
 
 
-        Transform clothes = new GameObject("Clothes").transform;
-        clothes.parent = sceneRoot;
-        clothes.tag = "ObjectsToBePlaced";
+        // weathertag = GameObject.Find("Weather").transform.GetChild(0).GetChild(0).tag;
+        // temperaturetag = GameObject.Find("Weather").transform.GetChild(0).GetChild(1).tag;
 
-        Vector3 clothesPosition = weatherPosition;
-        clothesPosition.y = floorPosition.y + 0.1f;
-        Debug.DrawLine(weatherPosition, clothesPosition, Color.red, 30f);
 
-        int counter = 0;
-        for (int i = 0; i < numberOfClothes; i++)
-        {
-            Transform currentClothe = ClothesPrefabs.transform.GetChild(rnd.Next(0, ClothesPrefabs.transform.childCount));
-            List<string> tags = currentClothe.GetComponent<TagsContainer>().tags;
+        // Transform clothes = new GameObject("Clothes").transform;
+        // clothes.parent = sceneRoot;
+        // clothes.tag = "ObjectsToBePlaced";
 
-            if (counter <= Math.Floor((double)numberOfClothes / 3))
-            {
-                if (!tags.Contains(weathertag) && !tags.Contains(temperaturetag))
-                {
-                    i--;
-                    continue;
-                }
-            }
-            Instantiate(currentClothe.gameObject, currentClothe.position, currentClothe.rotation, clothes);
+        // Vector3 clothesPosition = weatherPosition;
+        // clothesPosition.y = floorPosition.y + 0.1f;
+        // Debug.DrawLine(weatherPosition, clothesPosition, Color.red, 30f);
+
+        // int counter = 0;
+        // for (int i = 0; i < numberOfClothes; i++)
+        // {
+        //     Transform currentClothe = ClothesPrefabs.transform.GetChild(rnd.Next(0, ClothesPrefabs.transform.childCount));
+        //     List<string> tags = currentClothe.GetComponent<TagsContainer>().tags;
+
+        //     if (counter <= Math.Floor((double)numberOfClothes / 3))
+        //     {
+        //         if (!tags.Contains(weathertag) && !tags.Contains(temperaturetag))
+        //         {
+        //             i--;
+        //             continue;
+        //         }
+        //     }
+        //     Instantiate(currentClothe.gameObject, currentClothe.position, currentClothe.rotation, clothes);
             
-            if (tags.Contains(weathertag) || tags.Contains(temperaturetag))
-            {
-                counter++;
-            }
-        }
-        Debug.Log("Number of clothes: " + numberOfClothes + ", correct clothes: " + counter);
+        //     if (tags.Contains(weathertag) || tags.Contains(temperaturetag))
+        //     {
+        //         counter++;
+        //     }
+        // }
+        // Debug.Log("Number of clothes: " + numberOfClothes + ", correct clothes: " + counter);
 
-        clothes.Translate(clothesPosition);
-        clothes.Rotate(rotation.eulerAngles);
-
-
-        Transform bag = new GameObject("Bag").transform;
-        bag.parent = sceneRoot;
-        bag.tag = "Targets";
-
-        Vector3 bagPosition = weatherPosition;
-        bagPosition.y = floorPosition.y + 0.1f;
-        Instantiate(BagsPrefabs.transform.GetChild(rnd.Next(0, BagsPrefabs.transform.childCount)).gameObject, bagPosition, rotation, bag);
-        Debug.DrawLine(clothesPosition, bagPosition, Color.blue, 30f);
+        // clothes.Translate(clothesPosition);
+        // clothes.Rotate(rotation.eulerAngles);
 
 
-        Counter.Instance.InitializeCounter(counter);
+        // Transform bag = new GameObject("Bag").transform;
+        // bag.parent = sceneRoot;
+        // bag.tag = "Targets";
+
+        // Vector3 bagPosition = weatherPosition;
+        // bagPosition.y = floorPosition.y + 0.1f;
+        // Instantiate(BagsPrefabs.transform.GetChild(rnd.Next(0, BagsPrefabs.transform.childCount)).gameObject, bagPosition, rotation, bag);
+        // Debug.DrawLine(clothesPosition, bagPosition, Color.blue, 30f);
 
 
-        Vector3 assistantPosition = clothes.TransformPoint(-0.3f, 0f, 0.3f);
-        assistantPosition.y = floor.position.y;
-        Debug.DrawLine(bagPosition, assistantPosition, Color.green, 30f);
+        // Counter.Instance.InitializeCounter(counter);
 
-        if (assistantPresence != 0)
-        {
-            Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
-            VirtualAssistantManager.Instance.patience = assistantPatience;
-            VirtualAssistantManager.Instance.transform.localScale += new Vector3(0.25f * VirtualAssistantManager.Instance.transform.localScale.x, 0.25f * VirtualAssistantManager.Instance.transform.localScale.y, 0.25f * VirtualAssistantManager.Instance.transform.localScale.z);
-        }
+
+        // Vector3 assistantPosition = clothes.TransformPoint(-0.3f, 0f, 0.3f);
+        // assistantPosition.y = floor.position.y;
+        // Debug.DrawLine(bagPosition, assistantPosition, Color.green, 30f);
+
+        // if (assistantPresence != 0)
+        // {
+        //     Instantiate(virtualAssistant.gameObject, assistantPosition, virtualAssistant.transform.rotation, sceneRoot);
+        //     VirtualAssistantManager.Instance.patience = assistantPatience;
+        //     VirtualAssistantManager.Instance.transform.localScale += new Vector3(0.25f * VirtualAssistantManager.Instance.transform.localScale.x, 0.25f * VirtualAssistantManager.Instance.transform.localScale.y, 0.25f * VirtualAssistantManager.Instance.transform.localScale.z);
+        // }
 
     }
 
