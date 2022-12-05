@@ -14,7 +14,7 @@ public class ClothesPositionManager : ObjectPositionManager {
     {
         hasCollided = false;
         targetPosition = new Vector3();
-        floorPosition = GameObject.Find("SurfacePlane(Clone)").transform.position;
+        floorPosition = Vector3.zero;//GameObject.Find("SurfacePlane(Clone)").transform.position;
     }
 	
 	// Update is called once per frame

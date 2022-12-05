@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638054017255640059
+      ticks: 638058406904202720
     m_Hash: 404723397
   m_LockFileStatus:
     m_FilePath: C:/Users/luluj/Documents/Dev/Hololearn2H/HoloLearn2H/Packages/packages-lock.json
@@ -13,8 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638051511442822284
-    m_Hash: 4249762779
+      ticks: 638058406904202720
+    m_Hash: 1133616716
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -31,7 +31,7 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638051505789704494
+      ticks: 638058406903240928
     m_Hash: 1398826714
   - m_FilePath: C:\Users\luluj\Documents\Dev\Hololearn2H\HoloLearn2H\Packages\MixedReality\com.microsoft.mixedreality.toolkit.foundation-2.8.2.tgz/package.json
     m_PathExists: 0
@@ -45,7 +45,7 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638051505782110040
+      ticks: 638058406903885277
     m_Hash: 2211007518
   - m_FilePath: C:\Users\luluj\Documents\Dev\Hololearn2H\HoloLearn2H\Packages\MixedReality\com.microsoft.mixedreality.toolkit.standardassets-2.8.2.tgz/package.json
     m_PathExists: 0
@@ -59,7 +59,7 @@ m_LocalPackages:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638051505820023848
+      ticks: 638058406904202720
     m_Hash: 278339598
 m_ProjectPath: C:/Users/luluj/Documents/Dev/Hololearn2H/HoloLearn2H/Packages
 m_EditorVersion: 2021.3.10f1 (1c7d0df0160b)
@@ -3856,7 +3856,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: OpenXR is an open, royalty-free standard developed by Khronos that
     aims to simplify AR/VR development by allowing developers to target a wide range
     of AR/VR devices. Use this plug-in to enable OpenXR in XR Plug-in Management.
@@ -3883,12 +3883,14 @@ m_ResolvedPackages:
     - 1.5.0
     - 1.5.1
     - 1.5.3
+    - 1.6.0
     compatible:
     - 1.4.2
     - 1.5.0-exp.1
     - 1.5.0
     - 1.5.1
     - 1.5.3
+    - 1.6.0
     verified: 1.4.2
   dependencies:
   - name: com.unity.xr.management
@@ -3936,7 +3938,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 638000767940000000
   documentationUrl: 

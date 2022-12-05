@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 00f396949bdb93f43b913eb2656e62cb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: pCube29
+    100004: pCube30
+    100006: pCube31
+    100008: pCube32
+    100010: pCube33
+    100012: pCube34
+    100014: pCube35
+    100016: pCube36
+    100018: pCube37
+    100020: pCube38
+    100022: pCylinder10
+    100024: pCylinder11
+    100026: pCylinder12
+    100028: pCylinder13
+    100030: pCylinder4
+    100032: pCylinder5
+    100034: pCylinder6
+    100036: pCylinder7
+    100038: pCylinder8
+    100040: pCylinder9
+    100042: pTorus10
+    100044: pTorus18
+    100046: pTorus19
+    100048: pTorus20
+    100050: pTorus21
+    100052: transform101
+    100054: transform102
+    100056: transform103
+    100058: transform104
+    100060: transform105
+    100062: transform106
+    100064: transform107
+    100066: transform108
+    100068: transform109
+    100070: transform110
+    100072: transform111
+    100074: transform112
+    100076: transform113
+    100078: transform125
+    100080: transform126
+    100082: transform127
+    100084: transform128
+    100086: transform129
+    100088: transform130
+    100090: transform131
+    100092: transform90
+    100094: transform91
+    100096: transform92
+    100098: transform93
+    400000: //RootNode
+    400002: pCube29
+    400004: pCube30
+    400006: pCube31
+    400008: pCube32
+    400010: pCube33
+    400012: pCube34
+    400014: pCube35
+    400016: pCube36
+    400018: pCube37
+    400020: pCube38
+    400022: pCylinder10
+    400024: pCylinder11
+    400026: pCylinder12
+    400028: pCylinder13
+    400030: pCylinder4
+    400032: pCylinder5
+    400034: pCylinder6
+    400036: pCylinder7
+    400038: pCylinder8
+    400040: pCylinder9
+    400042: pTorus10
+    400044: pTorus18
+    400046: pTorus19
+    400048: pTorus20
+    400050: pTorus21
+    400052: transform101
+    400054: transform102
+    400056: transform103
+    400058: transform104
+    400060: transform105
+    400062: transform106
+    400064: transform107
+    400066: transform108
+    400068: transform109
+    400070: transform110
+    400072: transform111
+    400074: transform112
+    400076: transform113
+    400078: transform125
+    400080: transform126
+    400082: transform127
+    400084: transform128
+    400086: transform129
+    400088: transform130
+    400090: transform131
+    400092: transform90
+    400094: transform91
+    400096: transform92
+    400098: transform93
+    2100000: lambert8
+    2100002: lambert7
+    2100004: lambert1
+    2100006: lambert11
+    2100008: lambert10
+    2100010: lambert9
+    2300000: pCube38
+    2300002: //RootNode
+    3300000: pCube38
+    3300002: //RootNode
+    4300000: pCube38
+    4300002: pTorus24
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 9de2698e799475644a97645041c7cc95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert10
+    second: {fileID: 2100000, guid: 509cfc3db0e824a4e880842693aec324, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert11
+    second: {fileID: 2100000, guid: 8762d7ca75f35304d8a6676799db6df7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert7
+    second: {fileID: 2100000, guid: 583238b25bf074042b7c2f6b249821ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert8
+    second: {fileID: 2100000, guid: 58381b0ea96798345bae0040c607fc87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert9
+    second: {fileID: 2100000, guid: f8513cb45cb438e4780955fd672cecad, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

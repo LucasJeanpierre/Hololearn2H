@@ -9,7 +9,7 @@ public class BagCollisionManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        floorPosition = GameObject.Find("SurfacePlane(Clone)").transform.position;
+        floorPosition = Vector3.zero;//GameObject.Find("SurfacePlane(Clone)").transform.position;
     }
 
     // Update is called once per frame
@@ -26,7 +26,13 @@ public class BagCollisionManager : MonoBehaviour
     {
         if (other.gameObject.name != "SurfacePlane(Clone)")
         {
-            List<string> tags = other.transform.GetComponent<TagsContainer>().tags;
+            TagsContainer tagsContainer = other.transform.GetComponent<TagsContainer>();
+            if (tagsContainer == null)
+            {
+                return;
+            }
+
+            List<string> tags = tagsContainer.tags;
             string weather = GameObject.Find("Weather").transform.GetChild(0).GetChild(0).tag;
             string temperature = GameObject.Find("Weather").transform.GetChild(0).GetChild(1).tag;
 

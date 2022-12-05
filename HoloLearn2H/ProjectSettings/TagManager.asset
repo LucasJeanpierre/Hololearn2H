@@ -3,7 +3,27 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Menu
+  - Sunny
+  - Hot
+  - Rainy
+  - Cold
+  - Snowy
+  - Cloudy
+  - Warm
+  - FreezingCold
+  - Slider
+  - Glass
+  - Knife
+  - Fork
+  - Plate
+  - Bottle
+  - Tablespoon
+  - Paper
+  - Plastic
+  - ObjectsToBePlaced
+  - Targets
   layers:
   - Default
   - TransparentFX

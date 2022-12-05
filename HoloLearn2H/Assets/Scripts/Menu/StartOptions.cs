@@ -15,9 +15,11 @@ namespace HoloLearn
     {
 
         public void Start()
-        {
+        {  
             SettingsFileManager.Instance.CreateFileIfNotExists();
+            Debug.Log("before : " + SettingsFileManager.Instance);
             SettingsFileManager.Instance.LoadCurrentPlayerSettings(SettingsFileManager.Instance.LoadCurrentPlayerSelection());
+            Debug.Log("after : " + SettingsFileManager.Instance);
         }
 
         public void BackToMainMenu()
